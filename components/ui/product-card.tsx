@@ -5,17 +5,19 @@ import { MouseEventHandler } from "react";
 import { Expand, ShoppingCart } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-import Currency from "@/components/ui/currency";
-import IconButton from "@/components/ui/icon-button";
+import Currency  from "@/components/ui/currency";
+import IconButton  from "@/components/ui/icon-button";
 import usePreviewModal from "@/hooks/use-preview-modal";
 import useCart from "@/hooks/use-cart";
 import { Product } from "@/types";
 
 interface ProductCard {
-  data: Product;
+  data: Product
 }
 
-const ProductCard: React.FC<ProductCard> = ({ data }) => {
+const ProductCard: React.FC<ProductCard> = ({
+  data
+}) => {
   const previewModal = usePreviewModal();
   const cart = useCart();
   const router = useRouter();
@@ -35,7 +37,7 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
 
     cart.addItem(data);
   };
-
+  
   return ( 
     <div onClick={handleClick} className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4">
       {/* Image & actions */}
@@ -70,6 +72,6 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
       </div>
     </div>
   );
-};
+}
 
 export default ProductCard;
