@@ -42,9 +42,12 @@ const Summary = () => {
     );
     // const response = await axios.post(`/api/checkout`, data);
 
-    console.log("token : " + response.data);
+    // console.log("token : " + response.data);
+    console.log(response.data);
+    
 
     window.snap.pay(response.data.token);
+
   };
 
   return (
