@@ -8,7 +8,8 @@ export const revalidate = 0;
 
 const HomePage = async () => {
   const products = await getProducts({ isFeatured: true });
-  const billboard = await getBillboard("92f67e3f-efd2-4c16-a720-635ab7fbb19e");
+  // Billboard id diambil dari admin
+  const billboard = await getBillboard("b45d6737-38d9-4e28-911f-b21b89551c94");
 
   return (
     <Container>

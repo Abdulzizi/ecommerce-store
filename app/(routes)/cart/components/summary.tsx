@@ -29,13 +29,15 @@ const Summary = () => {
     return total + Number(item.price);
   }, 0);
 
+  // PAYMENT TRIGGER
   const onCheckout = async () => {
     const data = {
       id: items.map((item) => item.id),
       productName: items.map((item) => item.name),
       price: items.map((item) => item.price),
     };
-
+    console.log(`DATA CART : ${data}`);
+    
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
       data
@@ -44,10 +46,8 @@ const Summary = () => {
 
     // console.log("token : " + response.data);
     console.log(response.data);
-    
 
     window.snap.pay(response.data.token);
-
   };
 
   return (
