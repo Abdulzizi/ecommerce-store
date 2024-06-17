@@ -31,21 +31,18 @@ const Summary = () => {
 
   // PAYMENT TRIGGER
   const onCheckout = async () => {
-    const data = {
-      id: items.map((item) => item.id),
-      productName: items.map((item) => item.name),
-      price: items.map((item) => item.price),
-    };
-    console.log(`DATA CART : ${data}`);
+    const data = items.map((item) => ({
+      id: item.id,
+      productName: item.name,
+      price: Number(item.price),
+    }));
+    console.log(`DATA CART : ${JSON.stringify(data)}`);
     
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
       data
     );
-    // const response = await axios.post(`/api/checkout`, data);
-
-    // console.log("token : " + response.data);
-    console.log(response.data);
+    console.log('[DATA]',response.data);
 
     window.snap.pay(response.data.token);
   };
